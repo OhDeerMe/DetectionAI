@@ -1,4 +1,7 @@
-langchain
+langchain-openai
+langchain-community
+tiktoken
+faiss-gpu
 pypdf
 chromadb
 pytest
