@@ -216,7 +216,7 @@ def extract_text_from_pdf(pdf_path):
 #set the app title
 st.title('Welcome to SourceMind')
 
-st.write('Input your PDF files or URLS and ask away! 🤖')  # Initial text
+st.subheader('Input your PDF files or URLS and ask away! 🤖')  # Initial text
 
 #add URL and PDF input
 add_url_and_pdf_input()
@@ -224,7 +224,6 @@ add_url_and_pdf_input()
 # User inputs the question
 question = st.text_input("Enter your question:")
 
-# Set up the OpenAI API key
 my_secret = os.environ['OPENAI_API_KEY']
 
 if st.button("Enter"):
@@ -251,7 +250,7 @@ if st.button("Enter"):
         # Run similarity search
         results = db.similarity_search_with_relevance_scores(query_text, k=2)
         if len(results) == 0 or results[0][1] < 0.7:
-            st.write("It seems your question is not related to the content.")
+            st.write("It looks like your question might not be related to this content. Could you provide more details or clarify?")
             return
 
         # Create a context from the results
