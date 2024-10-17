@@ -1,0 +1,8 @@
+langchain
+pypdf
+chromadb
+pytest
+boto3
+fpdf
+bs4
+openai
