@@ -169,7 +169,7 @@ def add_url_and_pdf_input():
                                metadata={"source": url})
                 add_to_chroma([doc])  # Add document to Chroma
 
-                st.success("Uploaded! ✅")
+                st.success(f"{url} pploaded! ✅")
             else:
                st.error(f"Oops! We couldn't access the content at {url}. Please check the link and try again or provide us a new link.")
         # Process PDFs
@@ -189,7 +189,7 @@ def add_url_and_pdf_input():
             # Save the uploaded PDF to the unique path
             with open(pdf_path, "wb") as f:
                 f.write(pdf.getbuffer())
-            st.success(f"Uploaded PDF saved to {pdf_path}")
+            st.success(f"Uploaded PDF!")
 
             # Extract text from the uploaded PDF
             pdf_text = extract_text_from_pdf(pdf_path)
@@ -199,7 +199,7 @@ def add_url_and_pdf_input():
                            metadata={"source": pdf_path})
             add_to_chroma([doc])  # Add document to Chroma
 
-            st.success(f"Content from {pdf_path} added to the database.")
+            st.success(f"Content from {pdf_path} received!")
 
 
 def extract_text_from_pdf(pdf_path):
