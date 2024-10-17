@@ -70,15 +70,13 @@ def save_to_pdf(text, filename):
 
 for i, url in enumerate(urls):
     website_text = crawl_webpage(url)
-    for i, url in enumerate(urls):
-        website_text = crawl_webpage(url)
-        if website_text:
-            # Save the extracted text to a PDF
-            filename = os.path.join("data/", f'website_content_{i+1}.pdf')
-            save_to_pdf(website_text, filename)
-            print(f"Content from {url} saved to {filename}")
-        else:
-            print(f"Failed to retrieve content from {url}")
+    if website_text:
+        # Save the extracted text to a PDF
+        filename = os.path.join("data/", f'website_content_{i+1}.pdf')
+        save_to_pdf(website_text, filename)
+        print(f"Content from {url} saved to {filename}")
+    else:
+        print(f"Failed to retrieve content from {url}")
 
 
 def load_document2():
