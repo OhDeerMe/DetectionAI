@@ -267,7 +267,7 @@ if st.button("Enter"):
 
         # Display the sources and the response
         sources = [doc.metadata.get("source", None) for doc, _score in results]
-        formatted_response = f"Response: {response_text}\nSources: {sources}"
+        formatted_response = f"{response_text}"
         st.write(formatted_response)
 
     # Run the main function
