@@ -3,6 +3,7 @@ langchain-community
 tiktoken
 faiss-cpu
 pypdf
+pypdf2
 chromadb
 pytest
 boto3
