@@ -171,8 +171,7 @@ def add_url_and_pdf_input():
 
                 st.success("Uploaded! ✅")
             else:
-                st.error(f"Failed to retrieve content from {url}")
-
+               st.error(f"Oops! We couldn't access the content at {url}. Please check the link and try again or provide us a new link.")
         # Process PDFs
         for i, pdf in enumerate(pdf_files):
             # Base filename for the uploaded PDF
