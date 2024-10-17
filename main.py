@@ -120,8 +120,6 @@ db = Chroma(persist_directory=CHROMA_PATH,
 
 def add_url_and_pdf_input():
     st.subheader("Add URLs and PDF Files")
-    st.write("(Maximum 2 for each.)")
-
     # Limit to 2 URLs
     url1 = st.text_input("Enter URL 1:")
     url2 = st.text_input("Enter URL 2:")
