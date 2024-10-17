@@ -169,7 +169,7 @@ def add_url_and_pdf_input():
                                metadata={"source": url})
                 add_to_chroma([doc])  # Add document to Chroma
 
-                st.success(f"{url} pploaded! ✅")
+                st.success(f"{url} uploaded! ✅")
             else:
                st.error(f"Oops! We couldn't access the content at {url}. Please check the link and try again or provide us a new link.")
         # Process PDFs
