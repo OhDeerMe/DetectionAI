@@ -1,7 +1,3 @@
-import pysqlite3
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
-
 import os
 import streamlit as st
 from langchain_community.vectorstores import Chroma
@@ -20,6 +16,12 @@ from fpdf import FPDF
 from bs4 import BeautifulSoup
 from openai import OpenAI
 
+#to compatible with the streamlit version
+import pysqlite3
+import sys
+
+sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
+
 client = OpenAI(api_key=os.environ['OPENAI_API_KEY'])
 
 
@@ -35,16 +37,15 @@ def crawl_webpage(url):
         return None
 
 
-# Ensure the OpenAI API key is set
 CHROMA_PATH = "chroma"
 
 if not os.path.exists(CHROMA_PATH):
     os.makedirs(CHROMA_PATH)
-    
+
 DATA_PATH = "data"
+
 if not os.path.exists(DATA_PATH):
     os.makedirs(DATA_PATH)
-
 
 # List of websites to crawl
 urls = []
@@ -170,9 +171,7 @@ def add_url_and_pdf_input():
                                metadata={"source": url})
                 add_to_chroma([doc])  # Add document to Chroma
 
-                st.success(
-                    f"Content from {url} saved to {pdf_path} and added to the database."
-                )
+                st.success("Uploaded! ✅")
             else:
                 st.error(f"Failed to retrieve content from {url}")
 
@@ -216,19 +215,19 @@ def extract_text_from_pdf(pdf_path):
     return text
 
 
-# Call the function to add URL and PDF input
+#set the app title
+st.title('Welcome to SourceMind')
+
+st.write('Input your PDF files or URLS and ask away! 🤖')  # Initial text
+
+#add URL and PDF input
 add_url_and_pdf_input()
+
+# User inputs the question
+question = st.text_input("Enter your question:")
 
 # Set up the OpenAI API key
 my_secret = os.environ['OPENAI_API_KEY']
-
-#set the app title
-st.title('PseudoScience app')
-
-st.write('Welcome to PseudoScience app. Ask me anything!')  # Initial text
-
-# User inputs the question
-question = st.text_input("Enter your questions:")
 
 if st.button("Enter"):
     CHROMA_PATH = "chroma"
