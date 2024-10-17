@@ -40,7 +40,11 @@ CHROMA_PATH = "chroma"
 
 if not os.path.exists(CHROMA_PATH):
     os.makedirs(CHROMA_PATH)
+    
 DATA_PATH = "data"
+if not os.path.exists(DATA_PATH):
+    os.makedirs(DATA_PATH)
+
 
 # List of websites to crawl
 urls = []
