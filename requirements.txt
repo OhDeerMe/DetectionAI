@@ -11,3 +11,4 @@ fpdf
 bs4
 openai
 pysqlite3-binary
+streamlit
